@@ -3,8 +3,8 @@ var express = require('express'),
   util = require('util'),
   Twilio = require('twilio-js');
  
-Twilio.AccountSid = "xxxxxxxx";
-Twilio.AuthToken = "xxxxxxxx";
+Twilio.AccountSid = "AC29e25d51b4c18fe3db96c9ab92c54ce2";
+Twilio.AuthToken = "6f2403ab253a41d834e1955a6cbbb9c1";
  
 var app = express();
  
