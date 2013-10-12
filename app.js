@@ -3,9 +3,9 @@ var express = require('express'),
   util = require('util'),
   Twilio = require('twilio-js');
  
-Twilio.AccountSid = "AC29e25d51b4c18fe3db96c9ab92c54ce2";
-Twilio.AuthToken = "6f2403ab253a41d834e1955a6cbbb9c1";
- 
+Twilio.AccountSid = process.env.TWILIO_ACCOUNT
+Twilio.AuthToken = process.env.TWILIO_TOKEN
+
 var app = express();
  
 app.get("/", function (req, res) {
@@ -15,13 +15,16 @@ app.get("/", function (req, res) {
   var url = "http://wemakeawesomesh.it/soundcloudID/twiml.php?id=13158665&socket_id=" + socketID;
   Twilio.Call.create({
     to: "+4915153135071",
-    from: "+14155992671",
+    from: "+16122605267",
     url: url
   }, function(e) {
     console.log("Error: " + e)
+    res.write(e || "Success!")
+    res.end()
   });
 });
  
-app.listen(1234, function(){
-  console.log("Express server listening on port 1234");
+var port = process.env.PORT || 1234
+app.listen(port, function(){
+  console.log("Express server listening on port " + port);
 });
